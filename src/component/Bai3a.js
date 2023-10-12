@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState }from "react";
+import { useRoute } from "@react-navigation/native";
 import { Button,Text,TextInput,Image,View,Pressable,StyleSheet } from "react-native";
 import image from "../image/vs_blue.png"
 import start from "../image/star.png"
 export default function Bai3a({navigation}) {
+ const route = useRoute();
+const color = route.params?.color || "blue";
+const [im,setIm]= useState(require(`../image/vs_${color}.png`));
 return(
     <View style={styles.container}>
-        <Image source={image} style={styles.styleImage}></Image>
+        <Image source={im} style={styles.styleImage}></Image>
         <View>
            <View style={styles.containerHeader}>
            <Text style={styles.styleText}>Điện Thoại Vsmart Joy 3 - Hàng chính hãng</Text>

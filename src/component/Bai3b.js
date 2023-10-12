@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Button,Text,TextInput,Image,View,Pressable,StyleSheet } from "react-native";
-//import image from "../image/vs_blue.png"
+import image from "../image/vs_blue.png"
 import start from "../image/star.png"
 
 export default function Bai3b({navigation}) {
     const [image,setImage]=useState(require("../image/vs_blue.png"));
-    const [color,setColor]=useState("xanh");
+    const [color,setColor]=useState("blue");
 return(
     <View style={styles.container}>
       
@@ -21,28 +21,25 @@ return(
                     </View>
                     <Text style={styles.styleTextPrice}>1.790.000 đ</Text>
              </View>
-           
         </View>
         <View style={styles.containerfooter}>
-                 <Pressable style={styles.styleButton1} onPress={()=>{setImage(require("../image/vs_silver.png")),setColor("bạc")}}>
+                 <Pressable style={styles.styleButton1} onPress={()=>{setImage(require("../image/vs_silver.png")),setColor("silver")}}>
                  </Pressable>
-                 <Pressable style={styles.styleButton2} onPress={()=>{setImage(require("../image/vs_red.png")),setColor("đỏ")}}>
+                 <Pressable style={styles.styleButton2} onPress={()=>{setImage(require("../image/vs_red.png")),setColor("red")}}>
                  </Pressable>
-                 <Pressable style={styles.styleButton3} onPress={()=>{setImage(require("../image/vs_black.png")),setColor("đen")}}>
+                 <Pressable style={styles.styleButton3} onPress={()=>{setImage(require("../image/vs_black.png")),setColor("black")}}>
                  </Pressable>
-                 <Pressable style={styles.styleButton4} onPress={()=>{setImage(require("../image/vs_blue.png")),setColor("xanh")}}>
+                 <Pressable style={styles.styleButton4} onPress={()=>{setImage(require("../image/vs_blue.png")),setColor("blue")}}>
                  </Pressable>
                  <View style={styles.container2}>
-            <Pressable style={styles.containerButton} onPress={()=>{navigation.navigate("xong")}}>
+            <Pressable style={styles.containerButton} onPress={()=>{navigation.navigate("xong",{color})}}>
                 <Text style={styles.styleText2}>XONG</Text>
             </Pressable>
         </View>
         </View>
-       
+
     </View>
     
-   
-
 );
 
 }
