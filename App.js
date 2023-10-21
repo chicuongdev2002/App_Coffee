@@ -1,28 +1,34 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Bai3a from './src/component/Bai3a';
-import Bai3b from './src/component/Bai3b';
+import HomeSreen from "./src/component/HomeSreen";
+ import Home from "./src/component/Home";
+import MainApp from "./src/component/MainApp"
+import Login from "./src/component/Login"
 <div id="root"></div>
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="HomeSreen">
         <Stack.Screen
-          name="HOME"
-          component={Bai3a}
-          options={{ title: 'HOME' }}
+          name="Login"
+          component={Login}
+          options={{headerShown: false}}
         />
-         <Stack.Screen
-          name="chonmau"
-          component={Bai3b}
-          options={{ title: 'BACK' }}
+          <Stack.Screen
+          name="HomeSreen"
+          component={HomeSreen}
+          options={{headerShown: false}}
         />
-         <Stack.Screen
-          name="xong"
-          component={Bai3a}
-          options={{ title: 'HOME' }}
+        <Stack.Screen
+          name="MainApp"
+          component={MainApp}
+          options={{
+            // cardStyleInterpolator: forFade,
+            headerShown: false,
+            gestureEnabled: false,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
