@@ -24,9 +24,15 @@ Dự án này là một ứng dụng di động được phát triển bởi nh�
 #### Cà phê Truyền Thống
 ![Cà phê Truyền Thống](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/547ff5db-0ac0-43f9-b18b-583b1bfdccc4)
 
-##### Tìm kiếm sản phẩm
+#### Tìm kiếm sản phẩm
 ![Tìm kiếm sản phẩm](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/a494d17e-e434-4e6f-972b-6294c77937f0)
 
-### Chi Tiết Sản Phẩm và Đặt Hàng
+### Chi Tiết Sản Phẩm và Đặt Hàng(Mặc định là giá tiền size S và số lượng mặc định là 1)
 ![Cà Phê Máy](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/f9034900-2798-4fc3-a30a-e7b5c1ae9c2a)
+#### Thay đổi size sẽ thay đổi giá tiền
+![image](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/932d332a-46c1-415b-a3dc-d3ced559f4ae)
+#### Thay đổi số lượng sẽ thay đổi giá tiền
+![image](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/b1d144b1-ad77-4b6a-b47c-b7198b7b68e3)
+
+
 
