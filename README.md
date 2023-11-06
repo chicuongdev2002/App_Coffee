@@ -12,6 +12,8 @@
 ### Màn hình Đặt Hàng (Mặc định là Cà phê truyền thống)
 #### Cà phê Truyền Thống
 ![image](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/547ff5db-0ac0-43f9-b18b-583b1bfdccc4)
+##### Có thể tìm kiếm sản phẩm ở ô tìm kiếm
+![image](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/a494d17e-e434-4e6f-972b-6294c77937f0)
 #### Cà Phê Máy 
 ### Màn hình Chi Tiết Sản Phẩm
 ![image](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/f9034900-2798-4fc3-a30a-e7b5c1ae9c2a)
