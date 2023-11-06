@@ -3,14 +3,16 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeSreen from "./src/component/HomeSreen";
  import Home from "./src/component/Home";
+ import HoatDong from './src/component/HoatDong';
 import MainApp from "./src/component/MainApp"
 import Login from "./src/component/Login"
+import DatHang from "./src/component/DatHang"
 <div id="root"></div>
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeSreen">
+      <Stack.Navigator initialRouteName="DatHang">
         <Stack.Screen
           name="Login"
           component={Login}
@@ -24,6 +26,24 @@ export default function App() {
         <Stack.Screen
           name="MainApp"
           component={MainApp}
+          options={{
+            // cardStyleInterpolator: forFade,
+            headerShown: false,
+            gestureEnabled: false,
+          }}
+        />
+           <Stack.Screen
+          name="HoatDong"
+          component={HoatDong}
+          options={{
+            // cardStyleInterpolator: forFade,
+            headerShown: false,
+            gestureEnabled: false,
+          }}
+        />
+            <Stack.Screen
+          name="DatHang"
+          component={DatHang}
           options={{
             // cardStyleInterpolator: forFade,
             headerShown: false,

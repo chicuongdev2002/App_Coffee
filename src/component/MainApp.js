@@ -2,6 +2,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { Image } from "react-native";
 import Home from "../component/Home";
+import HoatDong from '../component/HoatDong';
+import HomeScreen  from './HomeSreen';
+import DatHang from './DatHang';
 const Tab = createBottomTabNavigator();
 
 export default function MainApp() {
@@ -26,7 +29,7 @@ export default function MainApp() {
               style={{ width: 50, height: 50 ,tintColor:'#AA0000'}}
               />
           ),
-          tabBarLabelStyle: { fontSize: 12, marginTop: 5 },
+          tabBarLabelStyle: { fontSize: 12, marginTop: 5,fontStyle:'Regular',fontFamily:'Roboto' },
           tabBarActiveTintColor: '#AA0000', // Màu khi mục đang được chọn
           tabBarInactiveTintColor: '#000000', // Màu khi mục không được chọn
       headerShown: false,
@@ -34,7 +37,7 @@ export default function MainApp() {
       />
        <Tab.Screen 
         name="Đặt hàng" 
-        component={""} 
+        component={DatHang} 
         options={({ route }) => ({
           tabBarIcon: ({ color, size }) => (
             <Image 
@@ -48,7 +51,7 @@ export default function MainApp() {
       />
       <Tab.Screen 
         name="Hoạt động" 
-        component={""} 
+        component={HoatDong} 
         options={({ route }) => ({
           tabBarIcon: ({ color, size }) => (
             <Image 

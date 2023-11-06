@@ -109,6 +109,9 @@ const styles = StyleSheet.create({
   containerText:{
     marginTop:10,
     marginBottom:50,
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
   },
   textTiepTuc:{
 

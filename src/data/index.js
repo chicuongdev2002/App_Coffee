@@ -46,3 +46,4 @@ export const banners = [
     require("../image/banner/banner2.jpg"),
     require("../image/banner/banner3.jpg"),
   ];
+
