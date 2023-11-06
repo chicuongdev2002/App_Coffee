@@ -3,16 +3,103 @@ import { View, ScrollView, Text, Image, TouchableOpacity, FlatList, TextInput } 
 import search from '../image/iconsearch.png';
 import { categories } from '../data'; // Import danh sách danh mục
 import { products } from '../data/product'; // Import danh sách sản phẩm
-
-export default function DatHang() {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+import ProductDetail  from "./ProductDetail";
+export default function DatHang({navigation}) {
+  const [selectedCategory, setSelectedCategory] = useState(1);
   const [searchText, setSearchText] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState(null); // Thêm biến trạng thái selectedProduct
 
-  const styles = {
+
+//   Lọc danh sách sản phẩm dựa trên danh mục và tìm kiếm
+  const filteredProducts = products.filter((product) => {
+    // Lọc theo danh mục (selectedCategory) và tìm kiếm (searchText)
+    return (
+      (selectedCategory === null || product.categorie === selectedCategory) &&
+      (searchText === "" ||
+        product.name.toLowerCase().includes(searchText.toLowerCase()))
+    );
+  });
+
+  return (
+
+      <View style={styles.scrollContainer}>
+        <View style={styles.searchContainer}>
+          <View style={styles.searchBar}>
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Tìm kiếm tên món ăn"
+              value={searchText}
+              onChangeText={(text) => setSearchText(text)}
+            />
+            <Image source={search} resizeMode="stretch" style={styles.searchIcon} />
+          </View>
+        </View>
+        <View style={styles.categoryListContainer}>
+          <FlatList
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            data={categories}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => {
+              const isActive = item.id === selectedCategory;
+              return (
+                <TouchableOpacity
+                  onPress={() => setSelectedCategory(item.id)}
+                  style={[
+                    styles.categoryItem,
+                    {
+                        shadowColor: selectedCategory === item.id ? "#AA0000" : "#000000",
+                    },
+                  ]}
+                >
+                  <Image source={item.image} style={styles.categoryImage} />
+     
+                  <Text style={{textAlign:'center', color: selectedCategory === item.id ? "#AA0000" : "#000000"}}>{item.title}</Text>
+                </TouchableOpacity>
+              );
+            }}
+          />
+        </View>
+          {/* Sử dụng FlatList để hiển thị danh sách sản phẩm */}
+<ScrollView style={styles.container}>
+<View style={styles.product}>
+     <FlatList
+        horizontal={false}
+        showsHorizontalScrollIndicator={false}
+          data={filteredProducts}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            //Khi sản phẩm được chọn
+            <TouchableOpacity  onPress={() =>navigation.navigate("ProductDetail",{item}) }>
+  <View key={item.id} style={styles.productContainer}>
+                <View style={{flex:3}}>
+                <Image source={item.image} style={styles.productImage} />
+                </View>
+           <View style={{flex:5}} >
+           <Text style={styles.productName}>{item.name}</Text>
+           <Text style={styles.productNote}>{item.note}</Text>
+           </View>
+          <View style={{flex:2}}>
+          <Text style={styles.productPrice}>{item.priceS}đ</Text>
+          </View>
+            </View>
+            </TouchableOpacity>
+          )}
+        />
+</View>
+</ScrollView>
+      </View>
+  );
+}
+const styles = {
     container: {
       flex: 1,
       backgroundColor: "#FFFFFF",
     },
+    container2: {
+        flexDirection: "row",
+        backgroundColor: "#FFFFFF",
+      },
     scrollContainer: {
       flex: 1,
       backgroundColor: "#ffffff",
@@ -91,86 +178,6 @@ export default function DatHang() {
         
     },
     product:{
-        marginTop:10
+        marginTop:0
     }
   };
-
-//   Lọc danh sách sản phẩm dựa trên danh mục và tìm kiếm
-  const filteredProducts = products.filter((product) => {
-    // Lọc theo danh mục (selectedCategory) và tìm kiếm (searchText)
-    return (
-      (selectedCategory === null || product.categorie === selectedCategory) &&
-      (searchText === "" ||
-        product.name.toLowerCase().includes(searchText.toLowerCase()))
-    );
-  });
-
-  return (
-    <ScrollView style={styles.container}>
-      <View style={styles.scrollContainer}>
-        <View style={styles.searchContainer}>
-          <View style={styles.searchBar}>
-            <TextInput
-              style={styles.searchInput}
-              placeholder="Tìm kiếm tên món ăn"
-              value={searchText}
-              onChangeText={(text) => setSearchText(text)}
-            />
-            <Image source={search} resizeMode="stretch" style={styles.searchIcon} />
-          </View>
-        </View>
-
-        <View style={styles.categoryListContainer}>
-          <FlatList
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            data={categories}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => {
-              const isActive = item.id === selectedCategory;
-              return (
-                <TouchableOpacity
-                  onPress={() => setSelectedCategory(item.id)}
-                  style={[
-                    styles.categoryItem,
-                    {
-                        shadowColor: selectedCategory === item.id ? "#AA0000" : "#000000",
-                        color: selectedCategory === item.id ? "#AA0000" : "#000000",
-                    },
-                  ]}
-                >
-                  <Image source={item.image} style={styles.categoryImage} />
-                  <Text style={styles.categoryText}>{item.title}</Text>
-                </TouchableOpacity>
-              );
-            }}
-          />
-        </View>
-<View style={styles.product}>
-     {/* Sử dụng FlatList để hiển thị danh sách sản phẩm */}
-     <FlatList
-        horizontal={false}
-        showsHorizontalScrollIndicator={false}
-          data={filteredProducts}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <View key={item.id} style={styles.productContainer}>
-                <View style={{flex:3}}>
-                <Image source={item.image} style={styles.productImage} />
-                </View>
-           <View style={{flex:5}} >
-           <Text style={styles.productName}>{item.name}</Text>
-           <Text style={styles.productNote}>{item.note}</Text>
-           </View>
-          <View style={{flex:2}}>
-          <Text style={styles.productPrice}>{item.price}</Text>
-          </View>
-            </View>
-          )}
-        />
-</View>
-     
-      </View>
-    </ScrollView>
-  );
-}

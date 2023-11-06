@@ -7,12 +7,13 @@ import HomeSreen from "./src/component/HomeSreen";
 import MainApp from "./src/component/MainApp"
 import Login from "./src/component/Login"
 import DatHang from "./src/component/DatHang"
+import ProductDetail from './src/component/ProductDetail';
 <div id="root"></div>
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="DatHang">
+      <Stack.Navigator initialRouteName="HomeSreen">
         <Stack.Screen
           name="Login"
           component={Login}
@@ -44,6 +45,15 @@ export default function App() {
             <Stack.Screen
           name="DatHang"
           component={DatHang}
+          options={{
+            // cardStyleInterpolator: forFade,
+            headerShown: false,
+            gestureEnabled: false,
+          }}
+        />
+            <Stack.Screen
+          name="ProductDetail"
+          component={ProductDetail}
           options={{
             // cardStyleInterpolator: forFade,
             headerShown: false,

@@ -47,6 +47,9 @@ export default function MainApp() {
               />
           ),
       headerShown: false,
+      tabBarLabelStyle: { fontSize: 12, marginTop: 5,fontStyle:'Regular',fontFamily:'Roboto' },
+      tabBarActiveTintColor: '#AA0000', // Màu khi mục đang được chọn
+      tabBarInactiveTintColor: '#000000', // Màu khi mục không được chọn
         })}
       />
       <Tab.Screen 
@@ -61,6 +64,9 @@ export default function MainApp() {
               />
           ),
       headerShown: false,
+      tabBarLabelStyle: { fontSize: 12, marginTop: 5,fontStyle:'Regular',fontFamily:'Roboto' },
+      tabBarActiveTintColor: '#AA0000', // Màu khi mục đang được chọn
+      tabBarInactiveTintColor: '#000000', // Màu khi mục không được chọn
         })}
       />
       <Tab.Screen 
@@ -75,6 +81,9 @@ export default function MainApp() {
               />
           ),
       headerShown: false,
+      tabBarLabelStyle: { fontSize: 12, marginTop: 5,fontStyle:'Regular',fontFamily:'Roboto' },
+      tabBarActiveTintColor: '#AA0000', // Màu khi mục đang được chọn
+      tabBarInactiveTintColor: '#000000', // Màu khi mục không được chọn
         })}
       />
       <Tab.Screen 
@@ -89,6 +98,9 @@ export default function MainApp() {
               />
           ),
       headerShown: false,
+      tabBarLabelStyle: { fontSize: 12, marginTop: 5,fontStyle:'Regular',fontFamily:'Roboto' },
+      tabBarActiveTintColor: '#AA0000', // Màu khi mục đang được chọn
+      tabBarInactiveTintColor: '#000000', // Màu khi mục không được chọn
         })}
       />
     </Tab.Navigator>
