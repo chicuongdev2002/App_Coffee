@@ -8,6 +8,7 @@ import MainApp from "./src/component/MainApp"
 import Login from "./src/component/Login"
 import DatHang from "./src/component/DatHang"
 import ProductDetail from './src/component/ProductDetail';
+import Other from './src/component/Other';
 <div id="root"></div>
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -54,6 +55,15 @@ export default function App() {
             <Stack.Screen
           name="ProductDetail"
           component={ProductDetail}
+          options={{
+            // cardStyleInterpolator: forFade,
+            headerShown: false,
+            gestureEnabled: false,
+          }}
+        />
+        <Stack.Screen
+          name="Other"
+          component={Other}
           options={{
             // cardStyleInterpolator: forFade,
             headerShown: false,

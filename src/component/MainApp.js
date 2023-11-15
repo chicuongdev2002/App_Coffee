@@ -5,6 +5,8 @@ import Home from "../component/Home";
 import HoatDong from '../component/HoatDong';
 import HomeScreen  from './HomeSreen';
 import DatHang from './DatHang';
+import Other from './Other';
+import Store from './Store';
 const Tab = createBottomTabNavigator();
 
 export default function MainApp() {
@@ -71,7 +73,7 @@ export default function MainApp() {
       />
       <Tab.Screen 
         name="Cửa hàng" 
-        component={""} 
+        component={Store} 
         options={({ route }) => ({
           tabBarIcon: ({ color, size }) => (
             <Image 
@@ -88,7 +90,7 @@ export default function MainApp() {
       />
       <Tab.Screen 
         name="Khác" 
-        component={""} 
+        component={Other} 
         options={({ route }) => ({
           tabBarIcon: ({ color, size }) => (
             <Image 
