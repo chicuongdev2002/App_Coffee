@@ -42,7 +42,7 @@ export default function ProductDetail({ route }) {
   return (
     <ScrollView style={styles.container}>
       <Image source={item.image} style={styles.productImage} />
-      <View style={{backgroundColor:"#EEEEEE",borderRadius:20}}>
+      <View style={{backgroundColor:"#EEEEEE",borderRadius:20,width:"100%",height:"35%"}}>
         <View style={{flexDirection:'row'}}>
         <Text style={styles.productName}>{item.name}</Text>
         <View style={{width:200}}></View>
@@ -108,30 +108,36 @@ export default function ProductDetail({ route }) {
           </Text>
         </TouchableOpacity>
       </View>
-
+      <View style={{justifyContent:"center",alignItems:'center',alignContent:'flex-start'}}>
+        <Text>Ghi chú</Text>
+        <TextInput
+        placeholder="Ghi chú"
+        style={{width:"80%",height:50,borderRadius:10,borderWidth:0.5,borderColor:'#DDDDDD'}}
+        />
+      </View>
       </View>
       
       {/* <Text style={styles.productSize}>Size: {item.size}</Text> */}
-<View style={{flexDirection:'row',marginTop:100,flex:1}}>
+<View style={{flexDirection:'row',marginTop:20,flex:1}}>
 <View style={styles.quantityContainer}>
     <View>
     <TouchableOpacity onPress={handleDecrement} style={{height:30,width:30,borderWidth:1,justifyContent:'center',alignItems:'center',alignContent:'center'}}>
           <Text style={styles.quantityButton}>-</Text>
         </TouchableOpacity>
     </View>
-    <View>
-    <TextInput style={styles.quantityInput} value={quantity.toString()} editable={false} />
+    <View style={{margin:10}}>
+    <Text>{quantity}</Text>
     </View>
      <View>
      <TouchableOpacity onPress={handleIncrement} style={{height:30,width:30,borderWidth:1,justifyContent:'center',alignItems:'center',alignContent:'center'}}>
           <Text style={styles.quantityButton}>+</Text>
         </TouchableOpacity>
      </View>
-      
       </View>
-      <View style={{flex:7}}>
-      <TouchableOpacity style={{backgroundColor:"#AA0000",alignContent:'center',alignItems:'center',justifyContent:'center',width:200,height:50}} >
-      <Text style={{ color: '#FFFFFF', textAlign: 'center' }}>{`Thêm${totalPrice}đ`}</Text>
+      <View style={{width:100}}></View>
+      <View style={{flex:5}}>
+      <TouchableOpacity style={{borderRadius:15,backgroundColor:"#AA0000",alignContent:'center',alignItems:'center',justifyContent:'center',width:200,height:50}} >
+      <Text style={{ color: '#FFFFFF', textAlign: 'center',fontWeight:700 }}>{`Thêm ${totalPrice}đ`}</Text>
       </TouchableOpacity>
       </View>
    
@@ -185,7 +191,7 @@ const styles = {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    flex: 3,
+    flex: 5,
   },
   quantityButton: {
     width: 30,
@@ -195,7 +201,7 @@ const styles = {
     alignItems: "center",
   },
   quantityInput: {
-    fontSize: 20,
+    fontSize: 5,
     textAlign: "center",
   },
   sizeButtonsContainer: {

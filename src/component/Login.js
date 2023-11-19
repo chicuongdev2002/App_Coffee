@@ -1,12 +1,23 @@
-import React from "react";
-import { ImageBackground, StyleSheet, View, Image, Text, TextInput,Pressable } from "react-native";
+import React,{ useState, useRef } from "react";
+import { ImageBackground, StyleSheet, View, Image, Text, TextInput,Pressable,TouchableOpacity } from "react-native";
 import logo from '../image/logo/logo.png'
 import covn from '../image/logo/covn.png'
 import fb from '../image/logo/fb.png'
 import apple from '../image/logo/apple.png'
 import google from '../image/logo/google.png'
 import MainApp from "./MainApp";
+import Home from "./Home";
+import PhoneInput from "react-native-phone-number-input";
+import CountryPicker, { DARK_THEME } from 'react-native-country-picker-modal'
+import { sendSmsVerification } from "../api/verify";
+// import {sendSmsVerification} from "../api/verifysms"
 const Login = ({ navigation }) => {
+  const [value, setValue] = useState("");
+ const [formattedValue, setFormattedValue] = useState("");
+ const phoneInput = useRef(null);
+ const onPressFlag = () => {
+  phoneInput.current.selectCountry();
+};
   return (
     <View style={styles.container}>
        <View>
@@ -15,22 +26,35 @@ const Login = ({ navigation }) => {
         <View style={styles.containerText}>
           <Text style={styles.styleText}>Bắt đầu cuộc hành trình của bạn</Text>
         </View>
-        <View style={styles.header}>
-             <View style={styles.leftSection}>
-               <Image source={covn} style={styles.covnImage}></Image>
-               <Text style={styles.plus84Text}>+84</Text>
-             </View>
-             <View style={{width:20}}></View>
-             <View style={styles.rightSection}>
-                <TextInput style={styles.rightSection} placeholder="Số điện thoại" keyboardType="numeric"></TextInput>
-             </View>
-       </View>
+        <PhoneInput
+           ref={phoneInput}
+           defaultValue={value}
+           defaultCode="VN"
+           layout="first"
+           onChangeText={(text) => {
+             setValue(text);
+           }}
+           onChangeFormattedText={(text) => {
+             setFormattedValue(text);
+           }}
+           countryPickerProps={{ withAlphaFilter: true }}
+           withShadow
+           autoFocus
+           onPressFlag={onPressFlag}
+           
+         />
        <View style={styles.buttonTiepTuc}>
-      <Pressable onPress={()=>{
-        navigation.navigate("MainApp")
-      }}>
-        <Text style={styles.textTiepTuc}>TIẾP TỤC</Text>
-      </Pressable>
+       <TouchableOpacity
+           style={styles.button}
+           onPress={() => {
+            sendSmsVerification(formattedValue).then((sent) => {
+              navigation.navigate("MainApp", { phoneNumber: formattedValue });
+              console.log(formattedValue);
+              });              
+            }}
+         >
+           <Text style={styles.buttonText}>Tiếp tục</Text>
+         </TouchableOpacity>
        </View>
        <View style={styles.containerFotter}>
         <Image source={apple} style={styles.imageFooter}></Image>
@@ -42,7 +66,9 @@ const Login = ({ navigation }) => {
         </View>
        </View>
        <View style={styles.footer}>
-        <Text style={styles.textFooter}>TIẾP TỤC NHƯ KHÁCH</Text>
+        <TouchableOpacity onPress={()=>navigation.navigate("MainApp")}> 
+           <Text style={styles.textFooter}>TIẾP TỤC NHƯ KHÁCH</Text>
+           </TouchableOpacity>
        </View>
        <View style={styles.footer2}>
         <Text>Bạn đã có tài khoản?</Text>
