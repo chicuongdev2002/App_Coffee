@@ -2,14 +2,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { Image } from "react-native";
 import Home from "../component/Home";
-import HoatDong from '../component/HoatDong';
+import HoatDong from '../component/Activity';
 import HomeScreen  from './HomeSreen';
-import DatHang from './DatHang';
+import DatHang from './Order';
 import Other from './Other';
 import Store from './Store';
-const Tab = createBottomTabNavigator();
 
-export default function MainApp() {
+const Tab = createBottomTabNavigator();
+export default function MainApp({route}) {
   return (
     <Tab.Navigator
       tabBarOptions={{

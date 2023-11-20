@@ -3,18 +3,21 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeSreen from "./src/component/HomeSreen";
  import Home from "./src/component/Home";
- import HoatDong from './src/component/HoatDong';
+ import HoatDong from './src/component/Activity';
 import MainApp from "./src/component/MainApp"
 import Login from "./src/component/Login"
-import DatHang from "./src/component/DatHang"
+import DatHang from "./src/component/Order"
 import ProductDetail from './src/component/ProductDetail';
 import Other from './src/component/Other';
+// import PhoneNumber from './src/component/PhoneNumber';
+//  import Otp from './src/component/Otp';
 <div id="root"></div>
+
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeSreen">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Login"
           component={Login}

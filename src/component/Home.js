@@ -13,7 +13,6 @@ const ios = Platform.OS === 'ios';
 export default function Home({ navigation }) {
   const [activeCategory, setActiveCategory] = useState(1);
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
-
   useEffect(() => {
     const bannerInterval = setInterval(() => {
       setCurrentBannerIndex((currentBannerIndex + 1) % banners.length);
