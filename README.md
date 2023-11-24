@@ -16,7 +16,7 @@
 
 ### Màn hình 2 (Nhập số điện thoại)
 ![image](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/65bdd0a4-3b30-43ee-aa2f-0c3ca3ff7085)
-Gửi mã xác định về điện thoại( Sử dụng api từ Twilio)
+- Gửi mã xác định về điện thoại( Sử dụng api từ Twilio)
 ![image](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/c25602ae-cfd7-4220-9c4c-d2ea156c1e7c)
 ### Màn hình 3
 ![Màn hình 3](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/eb22aedc-da06-4785-9e4e-c9bc02ffe603)
