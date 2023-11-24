@@ -15,8 +15,9 @@ Dự án này là một ứng dụng di động được phát triển bởi nh�
 ![Màn hình 1](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/a5f51f4e-09d7-49e4-90d2-81191401f609)
 
 ### Màn hình 2 (Nhập số điện thoại)
-![Màn hình 2](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/4be49d68-d5f3-41d6-982f-ef21224edccc)
-
+![image](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/65bdd0a4-3b30-43ee-aa2f-0c3ca3ff7085)
+Gửi mã xác định về điện thoại( Sử dụng api từ Twilio)
+![image](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/c25602ae-cfd7-4220-9c4c-d2ea156c1e7c)
 ### Màn hình 3
 ![Màn hình 3](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/eb22aedc-da06-4785-9e4e-c9bc02ffe603)
 
