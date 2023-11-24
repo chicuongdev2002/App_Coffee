@@ -18,7 +18,7 @@ const Other = () => {
       <View style={{ flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', paddingHorizontal: 20 }}>
         <Image source={require('../image/av.png')} style={{ width: 90, height: 90 }} />
         <View>
-          <Text style={{ fontSize: 16, color: '#fff' }}>Đăng Thị Quyền Cơ | THÀNH VIÊN</Text>
+          <Text style={{ fontSize: 16, color: '#fff' }}>Đặng Thị Quyền Cơ | THÀNH VIÊN</Text>
           <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 4 }}>
             <Image source={require('../image/medal.png')} style={{ width: 25, height: 25 }} />
             <Text style={{ color: '#fff', fontSize: 16, marginLeft: 4 }}>DRIPS: 0</Text>
@@ -41,8 +41,7 @@ const Other = () => {
         </View>
       </View>
       <View style={styles.body}>
-        <SafeAreaView>
-          <ScrollView style={{ height: 400 }}>
+          <ScrollView>
             <View>
               <View style={{ marginTop: 24 }}>
                 <Text style={styles.sectionHeader}>Tài Khoản</Text>
@@ -184,7 +183,6 @@ const Other = () => {
               Đăng xuất
             </Button>
           </ScrollView>
-        </SafeAreaView>
       </View>
     </View>
   );
@@ -198,6 +196,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#B3282D',
   },
   body: {
+    flex: 1,
     backgroundColor: 'rgb(215, 207, 207)',
     marginTop: 'auto',
     borderTopLeftRadius: 15,
