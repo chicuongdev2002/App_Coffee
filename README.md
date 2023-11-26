@@ -15,9 +15,11 @@
 ![Màn hình 1](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/a5f51f4e-09d7-49e4-90d2-81191401f609)
 
 ### Màn hình 2 (Nhập số điện thoại)
-![image](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/65bdd0a4-3b30-43ee-aa2f-0c3ca3ff7085)
+![image](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/4389cd03-ac51-497c-8fa3-7252903d685e)
 - Gửi mã xác định về điện thoại( Sử dụng api từ Twilio)
 ![image](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/c25602ae-cfd7-4220-9c4c-d2ea156c1e7c)
+- Nhập mã OTP và xác nhận
+![image](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/d121ca83-da9d-4c60-9953-4c95facce1e5)
 ### Màn hình 3
 ![Màn hình 3](https://github.com/chicuongdev2002/AppHighLand/assets/124854803/eb22aedc-da06-4785-9e4e-c9bc02ffe603)
 
