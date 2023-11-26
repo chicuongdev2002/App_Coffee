@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import { ScrollView, Button, Text, Image, View, StyleSheet, ImageBackground, Platform } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList, TouchableOpacity } from "react-native";
+import axios from 'axios'; // Import thư viện axios
 import avatar from "../image/av.png";
 import search from "../image/iconsearch.png";
 import banner from "../image/banner.jpg";
@@ -13,7 +14,12 @@ const ios = Platform.OS === 'ios';
 export default function Home({ navigation }) {
   const [activeCategory, setActiveCategory] = useState(1);
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
+  const[apiData,setApiData]=useState([]);
   useEffect(() => {
+    // Gọi API ở đây sau khi component đã được mount
+    fetchDataFromApi();
+    
+    // Cập nhật banner sau mỗi khoảng thời gian
     const bannerInterval = setInterval(() => {
       setCurrentBannerIndex((currentBannerIndex + 1) % banners.length);
     }, bannerChangeInterval);
@@ -22,6 +28,15 @@ export default function Home({ navigation }) {
       clearInterval(bannerInterval);
     };
   }, [currentBannerIndex]);
+
+  const fetchDataFromApi = async () => {
+    try {
+      const response = await axios.get('https://6562df38ee04015769a69d38.mockapi.io/categories'); // Thay URL_API bằng URL thực tế của API
+      setApiData(response.data); // Lưu dữ liệu từ API vào state
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
   return (
     <SafeAreaView style={ios ? {} : {}}>
      <View style={styles.container}>
@@ -52,14 +67,19 @@ export default function Home({ navigation }) {
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={true}
-            data={categories}
+            data={apiData}
             keyExtractor={(item) => item.id.toString()}
             contentContainerStyle={styles.flatListContainer}
             renderItem={({ item }) => {
               const isActive = item.id === activeCategory;
               return (
                 <TouchableOpacity
-                  onPress={() => setActiveCategory(item.id)}
+                onPress={() => {
+                  setActiveCategory(item.id);
+                  navigation.navigate("DatHang", { categoryId: item.id }); 
+                  console.log({categoryId: item.id })
+                    // Truyền ID của danh mục
+                }}  
                   style={[
                     styles.itemContainer,
                     {
@@ -116,12 +136,13 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     marginLeft: 10,
+    marginTop: 5
   },
   styleSearch: {
     width: 40,
     height: 40,
     marginLeft: 290,
-    // marginTop:5
+     marginTop:5
   },
   account: {
     width: 428,
@@ -210,7 +231,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   textContainer: {
-    padding: 4,
+    padding: 0,
   },
   imageContainer: {
     width: 90,

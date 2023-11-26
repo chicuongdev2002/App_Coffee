@@ -1,14 +1,29 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { View, ScrollView, Text, Image, TouchableOpacity, FlatList, TextInput } from "react-native";
 import search from '../image/iconsearch.png';
+import axios from 'axios'; // Import thư viện axios
 import { categories } from '../data'; // Import danh sách danh mục
 import { products } from '../data/product'; // Import danh sách sản phẩm
 import ProductDetail  from "./ProductDetail";
-export default function DatHang({navigation}) {
+export default function DatHang({navigation,route}) {
+  const[apiData,setApiData]=useState([]);
   const [selectedCategory, setSelectedCategory] = useState(1);
   const [searchText, setSearchText] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null); // Thêm biến trạng thái selectedProduct
+  const [flatListKey, setFlatListKey] = useState(Date.now().toString()); // Key cho FlatList
+  useEffect(() => {
+    filteredProducts;
+    // Gọi API ở đây sau khi component đã được mount
+    fetchDataFromApi();
 
+    if (route.params && route.params.categoryId) {
+         // Sử dụng setTimeout để đảm bảo giá trị selectedCategory được cập nhật sau khi setState hoàn thành
+    setTimeout(() => {
+      setSelectedCategory(route.params.categoryId);
+      setFlatListKey(Date.now().toString());
+    }, 0);
+    }
+  }, [route.params]);
 
 //   Lọc danh sách sản phẩm dựa trên danh mục và tìm kiếm
   const filteredProducts = products.filter((product) => {
@@ -19,7 +34,14 @@ export default function DatHang({navigation}) {
         product.name.toLowerCase().includes(searchText.toLowerCase()))
     );
   });
-
+  const fetchDataFromApi = async () => {
+    try {
+      const response = await axios.get('https://6562df38ee04015769a69d38.mockapi.io/categories'); // Thay URL_API bằng URL thực tế của API
+      setApiData(response.data); // Lưu dữ liệu từ API vào state
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
   return (
 
       <View style={styles.scrollContainer}>
@@ -36,6 +58,7 @@ export default function DatHang({navigation}) {
         </View>
         <View style={styles.categoryListContainer}>
           <FlatList
+           key={flatListKey} // Thêm key vào FlatList
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             data={categories}
@@ -64,6 +87,7 @@ export default function DatHang({navigation}) {
 <ScrollView style={styles.container}>
 <View style={styles.product}>
      <FlatList
+           key={selectedCategory} // Thêm key vào FlatList
         horizontal={false}
         showsHorizontalScrollIndicator={false}
           data={filteredProducts}

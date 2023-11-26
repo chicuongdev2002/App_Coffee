@@ -1,19 +1,17 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeSreen from "./src/component/HomeSreen";
- import Home from "./src/component/Home";
- import HoatDong from './src/component/Activity';
+import HomeScreen from "./src/component/HomeSreen";
+// import Home from "./src/component/Home";
+import HoatDong from './src/component/Activity';
 import MainApp from "./src/component/MainApp"
 import Login from "./src/component/Login"
 import DatHang from "./src/component/Order"
 import ProductDetail from './src/component/ProductDetail';
 import Other from './src/component/Other';
-// import PhoneNumber from './src/component/PhoneNumber';
-//  import Otp from './src/component/Otp';
-<div id="root"></div>
 
 const Stack = createNativeStackNavigator();
+
 export default function App() {
   return (
     <NavigationContainer>
@@ -21,61 +19,39 @@ export default function App() {
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
-          <Stack.Screen
-          name="HomeSreen"
-          component={HomeSreen}
-          options={{headerShown: false}}
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{ title: 'HomeScreen' }}
         />
         <Stack.Screen
           name="MainApp"
           component={MainApp}
-          options={{
-            // cardStyleInterpolator: forFade,
-            headerShown: false,
-            gestureEnabled: false,
-          }}
+          options={{ title: 'Back' }}
         />
-           <Stack.Screen
+        <Stack.Screen
           name="HoatDong"
           component={HoatDong}
-          options={{
-            // cardStyleInterpolator: forFade,
-            headerShown: false,
-            gestureEnabled: false,
-          }}
+          options={{ title: 'Back' }}
         />
-            <Stack.Screen
+        <Stack.Screen
           name="DatHang"
           component={DatHang}
-          options={{
-            // cardStyleInterpolator: forFade,
-            headerShown: false,
-            gestureEnabled: false,
-          }}
+          options={{ title: 'Back' }}
         />
-            <Stack.Screen
+        <Stack.Screen
           name="ProductDetail"
           component={ProductDetail}
-          options={{
-            // cardStyleInterpolator: forFade,
-            headerShown: false,
-            gestureEnabled: false,
-          }}
+          options={{ title: 'Back' }}
         />
         <Stack.Screen
           name="Other"
           component={Other}
-          options={{
-            // cardStyleInterpolator: forFade,
-            headerShown: false,
-            gestureEnabled: false,
-          }}
+          options={{ title: 'Back' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-

@@ -87,7 +87,7 @@ const Login = ({ navigation }) => {
           />
           <TouchableOpacity
             style={styles.button}
-            onPress={handleConfirmOTP}
+            onPress={()=>navigation.navigate("MainApp")}
           >
             <Text style={styles.buttonText}>Xác nhận OTP</Text>
           </TouchableOpacity>
