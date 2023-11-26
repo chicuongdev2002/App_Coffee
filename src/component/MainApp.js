@@ -39,7 +39,7 @@ export default function MainApp({ route }) {
       />
       <Tab.Screen
         name="Đặt hàng"
-        component={DatHang}
+        component={DatHang} //
         options={({ route }) => ({
           tabBarIcon: ({ color, size }) => (
             <Image

@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import { View, ScrollView, Text, Image, TouchableOpacity, FlatList, TextInput } from "react-native";
+import { View, ScrollView, Text, Image, TouchableOpacity, FlatList, TextInput, SectionList } from "react-native";
 import search from '../image/iconsearch.png';
 import axios from 'axios'; // Import thư viện axios
 import { categories } from '../data'; // Import danh sách danh mục
@@ -7,33 +7,35 @@ import { products } from '../data/product'; // Import danh sách sản phẩm
 import ProductDetail  from "./ProductDetail";
 export default function DatHang({navigation,route}) {
   const[apiData,setApiData]=useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState(route.params ? route.params.categoryId : 1) ;
   const [searchText, setSearchText] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null); // Thêm biến trạng thái selectedProduct
   const [flatListKey, setFlatListKey] = useState(Date.now().toString()); // Key cho FlatList
+  const [filteredProducts, setFilteredProducts] = useState([]); // Danh sách sản phẩm sau khi lọc
+
+console.log(selectedCategory);
+console.log("sp sau lock>>:",filteredProducts);
   useEffect(() => {
-    filteredProducts;
-    // Gọi API ở đây sau khi component đã được mount
-    fetchDataFromApi();
 
-    if (route.params && route.params.categoryId) {
-         // Sử dụng setTimeout để đảm bảo giá trị selectedCategory được cập nhật sau khi setState hoàn thành
-    setTimeout(() => {
-      setSelectedCategory(route.params.categoryId);
-      setFlatListKey(Date.now().toString());
-    }, 0);
-    }
-  }, [route.params]);
-
-//   Lọc danh sách sản phẩm dựa trên danh mục và tìm kiếm
-  const filteredProducts = products.filter((product) => {
+  let x =products.filter((product) => { 
     // Lọc theo danh mục (selectedCategory) và tìm kiếm (searchText)
+    //cái retrn này để làm j á trả về cái sản phẩm lọc được là
     return (
-      (selectedCategory === null || product.categorie === selectedCategory) &&
-      (searchText === "" ||
+      (selectedCategory == null || product.categorie == selectedCategory) &&
+      (searchText == "" ||
         product.name.toLowerCase().includes(searchText.toLowerCase()))
     );
   });
+  console.log("sp sau lock efect>>:",x);
+    setFilteredProducts([...x]); // Khởi tạo danh sách sản phẩm sau khi lọc
+    console.log("sp  root>>:",products);
+
+
+
+  }, [selectedCategory]);
+
+//   Lọc danh sách sản phẩm dựa trên danh mục và tìm kiếm
+
   const fetchDataFromApi = async () => {
     try {
       const response = await axios.get('https://6562df38ee04015769a69d38.mockapi.io/categories'); // Thay URL_API bằng URL thực tế của API
