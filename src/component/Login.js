@@ -41,14 +41,6 @@ const Login = ({ navigation }) => {
       });
   };
 
-  const handleConfirmOTP = () => {
-    if (otpInput.trim() === otp.trim()) {
-      navigation.navigate("MainApp");
-    } else {
-      console.log("Mã OTP không đúng");
-    }
-  };
-
   return (
     <View style={styles.container}>
       <View>
@@ -74,25 +66,14 @@ const Login = ({ navigation }) => {
         onPress={handleSendOTP}
         setShowOTPInput={true}
       >
-        
-        <Text style={styles.buttonText}>Tiếp tục</Text>
+        <Text style={styles.buttonText}>Gửi mã</Text>
       </TouchableOpacity>
-        <>
-          <TextInput
-            style={styles.otpInput}
-            placeholder="Nhập mã OTP"
-            keyboardType="numeric"
-            onChangeText={(text) => setOTPInput(text)}
-            value={otpInput}
-          />
-          <TouchableOpacity
-            style={styles.button}
-            onPress={()=>navigation.navigate("MainApp")}
-          >
-            <Text style={styles.buttonText}>Xác nhận OTP</Text>
-          </TouchableOpacity>
-        </>
-      
+      <TouchableOpacity
+        style={styles.buttonTiepTuc}
+      onPress={()=>navigation.navigate("Otp")}
+      >
+        <Text>Tiếp tục xác nhận OTP</Text>
+      </TouchableOpacity>
       <View style={styles.containerFotter}>
         <Image source={apple} style={styles.imageFooter} />
         <View style={styles.fb}>

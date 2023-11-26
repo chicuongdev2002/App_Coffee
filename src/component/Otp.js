@@ -1,83 +1,149 @@
-// import React, { useState } from "react";
-// import { SafeAreaView, StyleSheet, Button, Text } from "react-native";
+import React, { useState, useRef } from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View ,TextInput} from "react-native";
+import PhoneInput from "react-native-phone-number-input";
+import logo from '../image/logo/logo.png';
+import apple from '../image/logo/apple.png';
+import fb from '../image/logo/fb.png';
+import google from '../image/logo/google.png';
+import { sendSmsVerification } from "../api/verify";
 
-// import { checkVerification } from "../api/verify";
-// import OTPInputView from "@twotalltotems/react-native-otp-input";
+const Otp = ({ navigation }) => {
+  const [value, setValue] = useState("");
+  const [formattedValue, setFormattedValue] = useState("");
+  const [otp, setOTP] = useState('110402');
+  const [otpInput, setOTPInput] = useState('');
+  const [showOTPInput, setShowOTPInput] = useState(false);
+  const phoneInput = useRef(null);
 
-// const Otp = ({ route, navigation }) => {
-//  const { phoneNumber } = route.params;
-//  const [invalidCode, setInvalidCode] = useState(false);
-//  return (
-//    <SafeAreaView style={styles.wrapper}>
-//      <Text style={styles.prompt}>Enter the code we sent you</Text>
-//      <Text style={styles.message}>
-//        {`Your phone (${phoneNumber}) will be used to protect your account each time you log in.`}
-//      </Text>
-//      <Button
-//        title="Edit Phone Number"
-//        onPress={() => navigation.replace("PhoneNumber")}
-//      />
-//      <OTPInputView
-//        style={{ width: "80%", height: 200 }}
-//        pinCount={6}
-//        autoFocusOnLoad
-//        codeInputFieldStyle={styles.underlineStyleBase}
-//        codeInputHighlightStyle={styles.underlineStyleHighLighted}
-//        onCodeFilled={(code) => {
-//          checkVerification(phoneNumber, code).then((success) => {
-//            if (!success) setInvalidCode(true);
-//            success && navigation.replace("Gated");
-//          });
-//        }}
-//      />
-//      {invalidCode && <Text style={styles.error}>Incorrect code.</Text>}
-//    </SafeAreaView>
-//  );
-// };
+  return (
+    <View style={styles.container}>
+      <View>
+        <Image source={logo} style={styles.logo} />
+      </View>
+      <View style={styles.containerText}>
+        <Text style={styles.styleText}>Bắt đầu cuộc hành trình của bạn</Text>
+      </View>
+        <>
+          <TextInput
+            style={styles.otpInput}
+            placeholder="Nhập mã OTP"
+            keyboardType="numeric"
+            onChangeText={(text) => setOTPInput(text)}
+            value={otpInput}
+          />
+          <TouchableOpacity
+            style={styles.button}
+            onPress={()=>navigation.navigate("MainApp")}
+          >
+            <Text style={styles.buttonText}>Xác nhận OTP</Text>
+          </TouchableOpacity>
+        </>
+      
+      <View style={styles.containerFotter}>
+        <Image source={apple} style={styles.imageFooter} />
+        <View style={styles.fb}>
+          <Image source={fb} style={styles.imageFooter} />
+        </View>
+        <View style={styles.google}>
+          <Image source={google} style={styles.imageFooter} />
+        </View>
+      </View>
+      <View style={styles.footer}>
+        <TouchableOpacity onPress={() => navigation.navigate("MainApp")}>
+          <Text style={styles.textFooter}>TIẾP TỤC NHƯ KHÁCH</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.footer2}>
+        <Text>Bạn đã có tài khoản?</Text>
+        <Text style={{ color: "#AA0000", fontWeight: 700 }}> Đăng nhập</Text>
+      </View>
+    </View>
+  );
+};
 
-// const styles = StyleSheet.create({
-//  wrapper: {
-//    flex: 1,
-//    justifyContent: "center",
-//    alignItems: "center",
-//  },
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f0e2b1",
+    width: "100%",
+    height: "100%",
+  },
+  styleText: {
+    color: "#4c2f16",
+    fontSize: 30,
+    fontFamily: "Roboto",
+    fontStyle: 'normal',
+    fontWeight: '700',
+  },
+  logo: {
+    width: 200,
+    height: 200,
+  },
+  containerText: {
+    marginTop: 10,
+    marginBottom: 50,
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
+  },
+  buttonTiepTuc: {
+    backgroundColor: "#DDDDDD",
+    width: 350,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  imageFooter: {
+    width: 50,
+    height: 50,
+  },
+  containerFotter: {
+    flexDirection: 'row',
+    marginTop: 10,
+  },
+  google: {
+    marginTop: 5,
+  },
+  fb: {
+    marginLeft: 10
+  },
+  textFooter: {
+    fontFamily: "Roboto",
+    fontSize: 15,
+    fontWeight: "700",
+    color: "#AA0000"
+  },
+  footer: {
+    marginTop: 20,
+  },
+  footer2: {
+    flexDirection: 'row',
+    marginTop: 150,
+  },
+  otpInput: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginVertical: 10,
+    paddingHorizontal: 10,
+  },
+  button: {
+    backgroundColor: "#DDDDDD",
+    width: 350,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+});
 
-//  borderStyleBase: {
-//    width: 30,
-//    height: 45,
-//  },
-
-//  borderStyleHighLighted: {
-//    borderColor: "#03DAC6",
-//  },
-
-//  underlineStyleBase: {
-//    width: 30,
-//    height: 45,
-//    borderWidth: 0,
-//    borderBottomWidth: 1,
-//    color: "black",
-//    fontSize: 20,
-//  },
-
-//  underlineStyleHighLighted: {
-//    borderColor: "#03DAC6",
-//  },
-
-//  prompt: {
-//    fontSize: 24,
-//    paddingHorizontal: 30,
-//    paddingBottom: 20,
-//  },
-
-//  message: {
-//    fontSize: 16,
-//    paddingHorizontal: 30,
-//  },
-
-//  error: {
-//    color: "red",
-//  },
-// });
-
-// export default Otp;
+export default Otp;

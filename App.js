@@ -9,13 +9,14 @@ import Login from "./src/component/Login"
 import DatHang from "./src/component/Order"
 import ProductDetail from './src/component/ProductDetail';
 import Other from './src/component/Other';
+import Otp from './src/component/Otp';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="Login"
           component={Login}
@@ -49,6 +50,11 @@ export default function App() {
         <Stack.Screen
           name="Other"
           component={Other}
+          options={{ title: 'Back' }}
+        />
+         <Stack.Screen
+          name="Otp"
+          component={Otp}
           options={{ title: 'Back' }}
         />
       </Stack.Navigator>
