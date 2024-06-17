@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/AppHighLand/static/js/main.dbe3c6b9.js",
+    "main.js": "/AppHighLand/static/js/main.b6af6c40.js",
     "static/js/466.3e3008e6.js": "/AppHighLand/static/js/466.3e3008e6.js",
     "static/media/MaterialCommunityIcons.ttf": "/AppHighLand/static/media/MaterialCommunityIcons.5d42b4e60858731e7b65.ttf",
     "static/media/background.jpg": "/AppHighLand/static/media/background.2bc385f1e9d7fa1f9533.jpg",
@@ -66,11 +66,11 @@
     "favicon-16.png": "/AppHighLand/favicon-16.png",
     "serve.json": "/AppHighLand/serve.json",
     "manifest.json": "/AppHighLand/manifest.json",
-    "main.dbe3c6b9.js.map": "/AppHighLand/static/js/main.dbe3c6b9.js.map",
+    "main.b6af6c40.js.map": "/AppHighLand/static/js/main.b6af6c40.js.map",
     "466.3e3008e6.js.map": "/AppHighLand/static/js/466.3e3008e6.js.map"
   },
   "entrypoints": [
     "static/js/466.3e3008e6.js",
-    "static/js/main.dbe3c6b9.js"
+    "static/js/main.b6af6c40.js"
   ]
 }
