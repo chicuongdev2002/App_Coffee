@@ -18,7 +18,7 @@ const Other = () => {
       <View style={{ flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', paddingHorizontal: 20 }}>
         <Image source={require('../image/av.png')} style={{ width: 90, height: 90 }} />
         <View>
-          <Text style={{ fontSize: 16, color: '#fff' }}>Đặng Thị Quyền Cơ | THÀNH VIÊN</Text>
+          <Text style={{ fontSize: 16, color: '#fff' }}>Nguyễn Chí Cường | THÀNH VIÊN</Text>
           <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 4 }}>
             <Image source={require('../image/medal.png')} style={{ width: 25, height: 25 }} />
             <Text style={{ color: '#fff', fontSize: 16, marginLeft: 4 }}>DRIPS: 0</Text>

@@ -25,37 +25,44 @@ export default function App() {
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
-          options={{ title: 'HomeScreen' }}
+          // options={{ title: 'HomeScreen' }}
+              options={{ headerShown: false }}
         />
         <Stack.Screen
           name="MainApp"
           component={MainApp}
-          options={{ title: 'Back' }}
+          // options={{ title: 'Back' }}
+              options={{ headerShown: false }}
         />
         <Stack.Screen
           name="HoatDong"
           component={HoatDong}
-          options={{ title: 'Back' }}
+          // options={{ title: 'Back' }}
+              options={{ headerShown: false }}
         />
         <Stack.Screen
           name="DatHang"
           component={DatHang}
-          options={{ title: 'Back' }}
+          // options={{ title: 'Back' }}
+              options={{ headerShown: false }}
         />
         <Stack.Screen
           name="ProductDetail"
           component={ProductDetail}
-          options={{ title: 'Back' }}
+          // options={{ title: 'Back' }}
+              options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Other"
           component={Other}
-          options={{ title: 'Back' }}
+          // options={{ title: 'Back' }}
+              options={{ headerShown: false }}
         />
          <Stack.Screen
           name="Otp"
           component={Otp}
-          options={{ title: 'Back' }}
+          // options={{ title: 'Back' }}
+              options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
