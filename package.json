@@ -9,8 +9,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d docs",
-    "build": "expo build --web -d docs"
+   "deploy": "gh-pages -d web-build",
+    "build": "npx expo export:web"
   },
   "dependencies": {
     "@expo/webpack-config": "^19.0.0",
@@ -28,7 +28,6 @@
     "expo-linear-gradient": "~12.3.0",
     "expo-status-bar": "~1.6.0",
     "firebase": "^10.5.2",
-    "gh-pages": "^6.1.1",
     "otp-input-react": "^0.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -56,6 +55,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "gh-pages": "^6.1.1",
     "source-map-loader": "^4.0.1"
   },
   "private": true
