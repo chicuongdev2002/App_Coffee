@@ -1,0 +1,9 @@
+{
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "lang": "en",
+  "name": "Bai1",
+  "short_name": "Bai1",
+  "start_url": "/?utm_source=web_app_manifest",
+  "orientation": "portrait"
+}
